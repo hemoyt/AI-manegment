@@ -1,382 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مكتب الغفران للاستشارات التعليمية | Al-Ghufran Educational Consultancy</title>
-  <meta name="description" content="بوابتك إلى الجامعات الماليزية — استشارات تعليمية مجانية للدراسة في ماليزيا. الممثل الرسمي لأكثر من 17 جامعة ماليزية." />
-  <link rel="stylesheet" href="assets/index-DQBf8TKB.css" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.7; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    
-    /* Header */
-    header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; padding: 16px 0; }
-    header .container { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.3rem; font-weight: 800; color: #0f172a; text-decoration: none; }
-    .logo span { color: #2563eb; }
-    nav a { color: #475569; text-decoration: none; margin: 0 12px; font-size: 0.9rem; font-weight: 500; }
-    nav a:hover { color: #2563eb; }
-    .lang-switch { background: #2563eb; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
-    
-    /* Hero */
-    .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2563eb 100%); color: #fff; padding: 100px 0 80px; text-align: center; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 0%, transparent 50%); }
-    .hero h1 { font-size: 3rem; font-weight: 900; margin-bottom: 20px; position: relative; }
-    .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto 30px; position: relative; }
-    .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.3s; font-size: 1rem; }
-    .btn-primary { background: #22c55e; color: #fff; }
-    .btn-primary:hover { background: #16a34a; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(34,197,94,0.4); }
-    .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); margin-right: 12px; }
-    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
-    
-    /* Stats */
-    .stats { background: #fff; padding: 40px 0; border-bottom: 1px solid #e2e8f0; }
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
-    .stat-num { font-size: 2.5rem; font-weight: 900; color: #2563eb; }
-    .stat-label { color: #64748b; font-size: 0.9rem; margin-top: 4px; }
-    
-    /* Section */
-    section { padding: 80px 0; }
-    .section-title { text-align: center; margin-bottom: 50px; }
-    .section-title h2 { font-size: 2.2rem; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
-    .section-title p { color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-    
-    /* Universities grid */
-    .uni-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-    .uni-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
-    .uni-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
-    .uni-card img { width: 100%; height: 160px; object-fit: cover; }
-    .uni-card .info { padding: 16px; }
-    .uni-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
-    .uni-card .type { font-size: 0.8rem; color: #64748b; }
-    .uni-card .badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin-top: 8px; }
-    
-    /* Institutes */
-    .inst-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .inst-card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-right: 4px solid #2563eb; }
-    .inst-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-    .inst-card p { font-size: 0.9rem; color: #64748b; }
-    
-    /* Testimonials */
-    .test-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-    .test-card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: relative; }
-    .test-card::before { content: '"'; position: absolute; top: 10px; left: 20px; font-size: 4rem; color: #2563eb; opacity: 0.15; font-family: serif; }
-    .test-card p { font-size: 0.95rem; color: #475569; margin-bottom: 12px; position: relative; }
-    .test-card .name { font-weight: 700; color: #0f172a; }
-    
-    /* FAQ */
-    .faq-list { max-width: 800px; margin: 0 auto; }
-    .faq-item { background: #fff; border-radius: 10px; margin-bottom: 12px; padding: 20px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-    .faq-item h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; cursor: pointer; }
-    .faq-item p { color: #64748b; font-size: 0.95rem; }
-    
-    /* CTA */
-    .cta { background: linear-gradient(135deg, #2563eb, #1e40af); color: #fff; text-align: center; }
-    .cta h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
-    .cta p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 24px; }
-    
-    /* Footer */
-    footer { background: #0f172a; color: #94a3b8; padding: 60px 0 30px; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-    footer h3 { color: #fff; font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; }
-    footer a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 8px; font-size: 0.9rem; }
-    footer a:hover { color: #fff; }
-    .footer-bottom { border-top: 1px solid #1e293b; padding-top: 20px; text-align: center; font-size: 0.85rem; }
-    
-    /* WhatsApp float */
-    .whatsapp-float { position: fixed; bottom: 24px; left: 24px; z-index: 200; background: #25D366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 4px 20px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.3s; }
-    .whatsapp-float:hover { transform: scale(1.1); }
-    
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr; }
-      nav { display: none; }
-    }
-  </style>
-</head>
-<body>
-  
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <a href="/" class="logo">ال<span>غفران</span></a>
-      <nav>
-        <a href="#universities">الجامعات</a>
-        <a href="#majors">التخصصات</a>
-        <a href="#institutes">معاهد اللغة</a>
-        <a href="#testimonials">آراء الطلاب</a>
-        <a href="#faq">الأسئلة الشائعة</a>
-      </nav>
-      <button class="lang-switch" onclick="toggleLang()">English</button>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/image/1.png" />
+    <link rel="canonical" href="https://al-ghufran.com/" />
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>بوابتك إلى الجامعات الماليزية</h1>
-      <p>مكتب الغفران للاستشارات التعليمية — وكيل شريك رسمي لأكثر من ١٧ جامعة ماليزية. نساعدك في رحلتك التعليمية من البداية حتى التخرج.</p>
-      <div>
-        <a href="https://wa.me/601116817043?text=مرحباً، أريد استشارة مجانية" class="btn btn-outline">استفسر عبر واتساب</a>
-        <a href="https://wa.me/601116817043?text=مرحباً، أريد حجز استشارة مجانية" class="btn btn-primary">احجز استشارة مجانية</a>
-      </div>
-    </div>
-  </section>
+    <!-- Primary SEO -->
+    <title>Al-Ghufran Educational Consultancy | Study in Malaysia | الدراسة في ماليزيا</title>
+    <meta
+      name="description"
+      content="Al-Ghufran Educational Consultancy — official partner of 17+ Malaysian universities. University admission, student visa, housing, and airport pickup, free of charge for students. مكتب الغفران للاستشارات التعليمية — بوابتك إلى الجامعات الماليزية: قبول جامعي، فيزا، سكن واستقبال في المطار مجاناً."
+    />
+    <meta
+      name="keywords"
+      content="study in Malaysia, Malaysian universities, university admission Malaysia, student visa Malaysia, UTM, education consultancy, study abroad, الدراسة في ماليزيا, الجامعات الماليزية, القبول الجامعي, فيزا الطالب, مكتب استشارات تعليمية, الدراسة في الخارج"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Al-Ghufran Educational Consultancy" />
+    <meta name="theme-color" content="#dc2626" />
 
-  <!-- Stats -->
-  <div class="stats">
-    <div class="container">
-      <div class="stats-grid">
-        <div><div class="stat-num">١٧+</div><div class="stat-label">جامعة شريكة</div></div>
-        <div><div class="stat-num">١٠٠+</div><div class="stat-label">طالب وطالبة</div></div>
-        <div><div class="stat-num">٧+</div><div class="stat-label">سنوات خبرة</div></div>
-        <div><div class="stat-num">٠</div><div class="stat-label">رسوم على الطلاب</div></div>
-      </div>
-    </div>
-  </div>
+    <!-- Geo / Local SEO -->
+    <meta name="geo.region" content="MY-01" />
+    <meta name="geo.placename" content="Johor Bahru, Malaysia" />
+    <meta name="geo.position" content="1.5587;103.6379" />
+    <meta name="ICBM" content="1.5587, 103.6379" />
 
-  <!-- Why Us -->
-  <section id="about">
-    <div class="container">
-      <div class="section-title">
-        <h2>لماذا تختارنا؟</h2>
-        <p>فريق متخصص ومتفهم لاحتياجات الطلاب — نعمل باستمرار منذ عام ٢٠١٧</p>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:24px; text-align:center;">
-        <div style="padding:24px;">
-          <div style="font-size:2.5rem; margin-bottom:12px;">🎓</div>
-          <h3 style="margin-bottom:8px;">استشارات مجانية</h3>
-          <p style="color:#64748b;font-size:0.9rem;">استشارات أكاديمية مجانية غير محدودة — الطالب لا يدفع شيئاً</p>
-        </div>
-        <div style="padding:24px;">
-          <div style="font-size:2.5rem; margin-bottom:12px;">✈️</div>
-          <h3 style="margin-bottom:8px;">استقبال المطار</h3>
-          <p style="color:#64748b;font-size:0.9rem;">نستقبلك في المطار وننقلك مباشرةً إلى سكنك</p>
-        </div>
-        <div style="padding:24px;">
-          <div style="font-size:2.5rem; margin-bottom:12px;">🏠</div>
-          <h3 style="margin-bottom:8px;">ترتيبات السكن</h3>
-          <p style="color:#64748b;font-size:0.9rem;">نجد لك سكناً آمناً ومناسباً قريباً من الجامعة</p>
-        </div>
-        <div style="padding:24px;">
-          <div style="font-size:2.5rem; margin-bottom:12px;">📋</div>
-          <h3 style="margin-bottom:8px;">نتولى كل الأوراق</h3>
-          <p style="color:#64748b;font-size:0.9rem;">إجراءات التأشيرة والتأمين الصحي وكل ما تحتاجه</p>
-        </div>
-        <div style="padding:24px;">
-          <div style="font-size:2.5rem; margin-bottom:12px;">🤝</div>
-          <h3 style="margin-bottom:8px;">نبقى بعد القبول</h3>
-          <p style="color:#64748b;font-size:0.9rem;">لا نختفي بعد أن تصل إلى ماليزيا — نبقى على تواصل</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Al-Ghufran Educational Consultancy" />
+    <meta property="og:title" content="Al-Ghufran Educational Consultancy | Study in Malaysia" />
+    <meta
+      property="og:description"
+      content="Official partner of 17+ Malaysian universities. Admission, visa, housing, and airport pickup — free of charge for students."
+    />
+    <meta property="og:url" content="https://al-ghufran.com/" />
+    <meta property="og:image" content="https://al-ghufran.com/image/home%20bg.jpg" />
+    <meta property="og:image:alt" content="Kuala Lumpur skyline — Study in Malaysia" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:locale:alternate" content="en_US" />
 
-  <!-- Universities -->
-  <section id="universities" style="background:#fff;">
-    <div class="container">
-      <div class="section-title">
-        <h2>الجامعات الشريكة</h2>
-        <p>الممثل الرسمي لأكثر من ١٧ جامعة ماليزية رائدة</p>
-      </div>
-      <div class="uni-grid">
-        <!-- University cards with images we have -->
-        <div class="uni-card"><img src="image/Universiti Malaya.jpg" alt="Universiti Malaya"><div class="info"><h3>Universiti Malaya (UM)</h3><p class="type">جامعة حكومية — الأقدم والأعرق في ماليزيا</p><span class="badge">Kuala Lumpur</span></div></div>
-        <div class="uni-card"><img src="image/Universiti Putra Malaysia.jpg" alt="UPM"><div class="info"><h3>Universiti Putra Malaysia (UPM)</h3><p class="type">جامعة حكومية — زراعة وطب بيطري</p><span class="badge">Serdang</span></div></div>
-        <div class="uni-card"><img src="image/Universiti Kebangsaan Malaysia.jpg" alt="UKM"><div class="info"><h3>Universiti Kebangsaan Malaysia (UKM)</h3><p class="type">جامعة حكومية — علوم إنسانية واجتماعية</p><span class="badge">Bangi</span></div></div>
-        <div class="uni-card"><img src="image/UTM.jpeg" alt="UTM"><div class="info"><h3>Universiti Teknologi Malaysia (UTM)</h3><p class="type">جامعة حكومية — هندسة وتكنولوجيا</p><span class="badge">Johor Bahru</span></div></div>
-        <div class="uni-card"><img src="image/UTP.jpg" alt="UTP"><div class="info"><h3>Universiti Teknologi PETRONAS (UTP)</h3><p class="type">جامعة خاصة — هندسة بترولية وطاقة</p><span class="badge">Perak</span></div></div>
-        <div class="uni-card"><img src="image/Universiti Kuala Lumpur.jpg" alt="UniKL"><div class="info"><h3>Universiti Kuala Lumpur (UniKL)</h3><p class="type">جامعة خاصة — تكنولوجيا وهندسة</p><span class="badge">Kuala Lumpur</span></div></div>
-        <div class="uni-card"><img src="image/UCSI.jpg" alt="UCSI"><div class="info"><h3>UCSI University</h3><p class="type">جامعة خاصة — طب وهندسة وإدارة أعمال</p><span class="badge">Kuala Lumpur</span></div></div>
-        <div class="uni-card"><img src="image/APU.jpg" alt="APU"><div class="info"><h3>Asia Pacific University (APU)</h3><p class="type">جامعة خاصة — تكنولوجيا المعلومات</p><span class="badge">Kuala Lumpur</span></div></div>
-        <div class="uni-card"><img src="image/MMU.jpg" alt="MMU"><div class="info"><h3>Multimedia University (MMU)</h3><p class="type">جامعة خاصة — تكنولوجيا المعلومات والاتصالات</p><span class="badge">Cyberjaya</span></div></div>
-        <div class="uni-card"><img src="image/UNITEN.jpg" alt="UNITEN"><div class="info"><h3>Universiti Tenaga Nasional (UNITEN)</h3><p class="type">جامعة خاصة — هندسة وطاقة وتكنولوجيا</p><span class="badge">Putrajaya</span></div></div>
-        <div class="uni-card"><img src="image/Lincoln.jpg" alt="Lincoln"><div class="info"><h3>Lincoln University</h3><p class="type">جامعة خاصة — إدارة أعمال وعلوم اجتماعية</p><span class="badge">Selangor</span></div></div>
-        <div class="uni-card"><img src="image/SEGI University.jpg" alt="SEGI"><div class="info"><h3>SEGI University</h3><p class="type">جامعة خاصة — إدارة أعمال وعلوم صحية</p><span class="badge">Kuala Lumpur</span></div></div>
-        <div class="uni-card"><img src="image/UOC.jpg" alt="UOC"><div class="info"><h3>University of Cyberjaya (UOC)</h3><p class="type">جامعة خاصة — علوم صحية وطب</p><span class="badge">Cyberjaya</span></div></div>
-        <div class="uni-card"><img src="image/UTMSPACE.jpg" alt="UTMSPACE"><div class="info"><h3>UTM SPACE</h3><p class="type">جامعة حكومية — برامج مهنية وتنفيذية</p><span class="badge">Kuala Lumpur</span></div></div>
-      </div>
-      <div style="text-align:center;margin-top:30px;color:#64748b;font-size:0.85rem;">
-        والمزيد... جامعة تايلورز، جامعة نوتنغهام ماليزيا، USM، IIUM، جامعة صباح، جامعة ساراواك، وغيرها
-      </div>
-    </div>
-  </section>
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Al-Ghufran Educational Consultancy | Study in Malaysia" />
+    <meta
+      name="twitter:description"
+      content="Official partner of 17+ Malaysian universities. Admission, visa, housing, and airport pickup — free for students."
+    />
+    <meta name="twitter:image" content="https://al-ghufran.com/image/home%20bg.jpg" />
 
-  <!-- Academic Majors -->
-  <section id="majors">
-    <div class="container">
-      <div class="section-title">
-        <h2>التخصصات الأكاديمية</h2>
-        <p>اكتشف مجموعة واسعة من التخصصات الأكاديمية المتميزة في أفضل الجامعات الماليزية</p>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px;">
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">⚕️ الطب البشري</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🦷 طب الأسنان</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">💊 الصيدلة</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🏥 التمريض</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🐾 الطب البيطري</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">⚙️ الهندسة الميكانيكية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">⚡ الهندسة الكهربائية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🏗️ الهندسة المدنية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🧪 الهندسة الكيميائية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🛢️ هندسة البترول</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">✈️ هندسة الطيران</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">💻 هندسة الحاسوب</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🧬 الهندسة الطبية الحيوية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🌱 الهندسة البيئية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">💼 إدارة الأعمال</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🌍 إدارة الأعمال الدولية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">📊 إدارة سلسلة التوريد</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">👥 إدارة الموارد البشرية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">⚖️ القانون الدولي</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">📜 القانون التجاري</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🌿 القانون البيئي</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🔍 العدالة الجنائية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🤖 علوم الحاسوب</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🧠 علم النفس</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">📚 التربية والتعليم</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">📰 الصحافة والإعلام</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🌐 العلاقات الدولية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">💰 المالية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">📈 التسويق</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🚀 ريادة الأعمال</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🎭 اللغات وآدابها</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">📊 علم الاجتماع</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🏨 إدارة الفنادق</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🧬 التكنولوجيا الحيوية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">📚 الدراسات الإسلامية</div>
-        <div style="background:#fff;padding:16px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.08);">🌊 علوم البحار</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- English Language Institutes -->
-  <section id="institutes" style="background:#fff;">
-    <div class="container">
-      <div class="section-title">
-        <h2>معاهد اللغة الإنجليزية</h2>
-        <p>تعلم اللغة الإنجليزية في أفضل المعاهد الماليزية المعتمدة للتحضير للجامعة</p>
-      </div>
-      <div class="inst-grid">
-        <div class="inst-card"><h3>ELS Language Center</h3><p>من أبرز معاهد تعليم اللغة الإنجليزية في ماليزيا، يقدم برامج مكثفة لتعلم اللغة الإنجليزية.</p></div>
-        <div class="inst-card"><h3>British Council Malaysia</h3><p>المجلس الثقافي البريطاني — منظمة دولية رائدة في تعليم اللغة الإنجليزية والثقافة البريطانية.</p></div>
-        <div class="inst-card"><h3>Cambridge English Academy</h3><p>متخصصة في إعداد الطلاب لامتحانات كامبريدج الدولية مع منهج متطور.</p></div>
-        <div class="inst-card"><h3>Berlitz Malaysia</h3><p>منهج فريد لتعلم اللغة الإنجليزية مع التركيز على التواصل الفعال والتطبيق العملي.</p></div>
-        <div class="inst-card"><h3>Ericana Language Centre</h3><p>برامج تعليمية متخصصة في اللغة الإنجليزية مع التركيز على التطبيق العملي.</p></div>
-        <div class="inst-card"><h3>Wall Street English</h3><p>منهج مبتكر لتعلم اللغة الإنجليزية مع التركيز على التطبيق العملي والتواصل.</p></div>
-        <div class="inst-card"><h3>Excel English Academy</h3><p>برامج متميزة لتعلم اللغة الإنجليزية مع منهج متطور يناسب جميع المستويات.</p></div>
-        <div class="inst-card"><h3>English Zone</h3><p>بيئة تعليمية مريحة ومحفزة لتعلم اللغة الإنجليزية بطرق حديثة.</p></div>
-        <div class="inst-card"><h3>Global English Center</h3><p>برامج متقدمة لتعلم اللغة الإنجليزية مع التركيز على التواصل العالمي.</p></div>
-        <div class="inst-card"><h3>Success English Center</h3><p>يركز على نجاح الطلاب في تعلم اللغة الإنجليزية وتحقيق أهدافهم الأكاديمية.</p></div>
-        <div class="inst-card"><h3>Peak English Institute</h3><p>يهدف إلى الوصول بالطلاب إلى أعلى مستويات إتقان اللغة الإنجليزية.</p></div>
-        <div class="inst-card"><h3>Malaysia English Academy</h3><p>برامج شاملة لتعلم اللغة الإنجليزية مع التركيز على الاحتياجات المحلية.</p></div>
-        <div class="inst-card"><h3>Inter-Cultural Language School</h3><p>برامج متعددة اللغات مع التركيز على التفاهم الثقافي والتواصل الدولي.</p></div>
-        <div class="inst-card"><h3>Inlingua</h3><p>شبكة دولية لتعليم اللغات تقدم برامج عالية الجودة في اللغة الإنجليزية.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section id="testimonials">
-    <div class="container">
-      <div class="section-title">
-        <h2>آراء الطلاب</h2>
-        <p>رسائل حقيقية من طلاب حقيقيين. لم نكتبها، فقط نشرناها.</p>
-      </div>
-      <div class="test-grid">
-        <div class="test-card"><p>قدمت سبتمبر، الفيزا خلصت، وصلت ماليزيا ٣ نوفمبر. كل شيء كان مرتب وسريع.</p><div class="name">أحمد محمد</div></div>
-        <div class="test-card"><p>ظننت إجراءات الفيزا ستأخذ شهوراً. خلصوا منها في ثلاثة أسابيع وأنا ما تحركت من البيت.</p><div class="name">فاطمة العلي</div></div>
-        <div class="test-card"><p>أهلي كانوا قلقين لأني رح أسكن لحالي بعيد عنهم. رتبوا السكن والاستقبال من المطار، وحتى الآن بيطمنوا عليّ من وقت لوقت.</p><div class="name">عبدالله الزهراني</div></div>
-        <div class="test-card"><p>خدمة ممتازة من البداية للنهاية. ساعدوني في كل شيء من اختيار الجامعة للتخصص المناسب لي.</p><div class="name">مريم الشامي</div></div>
-        <div class="test-card"><p>ما دفعت ولا ريال. فعلاً زي ما قالوا — الطالب ما يدفع شيء. كل شي مجاناً.</p><div class="name">خالد المطيري</div></div>
-        <div class="test-card"><p>تواصلهم ممتاز. أي سؤال عندي يردوا عليه بسرعة. حسيت إني مو لحالي أبداً.</p><div class="name">نورا العتيبي</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" style="background:#fff;">
-    <div class="container">
-      <div class="section-title">
-        <h2>الأسئلة الشائعة</h2>
-        <p>إجابات على أكثر الأسئلة شيوعاً حول الدراسة في ماليزيا</p>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item"><h3>كم تبلغ تكلفة الدراسة في ماليزيا؟</h3><p>تختلف التكلفة حسب الجامعة والتخصص، لكنها أقل بكثير من الدول الغربية. يمكننا مساعدتك في إيجاد الخيار المناسب لميزانيتك.</p></div>
-        <div class="faq-item"><h3>كم من الوقت يستغرق الحصول على القبول؟</h3><p>عادةً من أسبوعين إلى شهر حسب الجامعة والتخصص. نحن نتابع كل الإجراءات لتسريع العملية.</p></div>
-        <div class="faq-item"><h3>ما هي أفضل الجامعات في ماليزيا؟</h3><p>جامعة مالايا (UM)، جامعة بترا (UPM)، الجامعة الوطنية (UKM)، جامعة التكنولوجيا (UTM)، وجامعة العلوم (USM) من أفضل الجامعات الحكومية. ولدينا شراكات مع العديد من الجامعات الخاصة المتميزة.</p></div>
-        <div class="faq-item"><h3>ما هي أفضل المدن للدراسة في ماليزيا؟</h3><p>كوالالمبور، سيلانجور، بينانج، جوهور، وبوتراجايا من أفضل المدن للدراسة. كل مدينة لها مميزاتها.</p></div>
-        <div class="faq-item"><h3>هل أحتاج فيزا للدراسة في ماليزيا؟</h3><p>نعم، تحتاج إلى تأشيرة طالب. نحن نتولى كل إجراءات التأشيرة نيابة عنك.</p></div>
-        <div class="faq-item"><h3>هل يمكنني الحصول على منحة دراسية؟</h3><p>نعم، هناك العديد من المنح الدراسية المتاحة للطلاب الدوليين. نحن نساعدك في البحث عن المنح المناسبة وتقديم الطلبات.</p></div>
-        <div class="faq-item"><h3>هل يمكنني العمل أثناء الدراسة؟</h3><p>نعم، يُسمح للطلاب الدوليين بالعمل بدوام جزئي (حتى 20 ساعة أسبوعياً) أثناء الدراسة.</p></div>
-        <div class="faq-item"><h3>هل أحتاج إلى تعلم اللغة الماليزية؟</h3><p>لا، لغة الدراسة في معظم الجامعات الماليزية هي الإنجليزية. لا تحتاج لتعلم اللغة الماليزية.</p></div>
-        <div class="faq-item"><h3>ما هي الخدمات التي تقدمونها؟</h3><p>نقدم استشارات مجانية، مساعدة في اختيار الجامعة والتخصص، تجهيز طلبات القبول، إجراءات التأشيرة، ترتيب السكن، استقبال المطار، والتأمين الصحي.</p></div>
-        <div class="faq-item"><h3>هل يمكنني تغيير التخصص بعد القبول؟</h3><p>نعم، يمكن تغيير التخصص في معظم الجامعات خلال الأسابيع الأولى من الدراسة، حسب توفر المقاعد.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-      <h2>ابدأ رحلتك الأكاديمية اليوم</h2>
-      <p>تواصل معنا واحصل على استشارة مجانية من فريقنا المتخصص</p>
-      <a href="https://wa.me/601116817043?text=مرحباً، أريد البدء في رحلتي التعليمية في ماليزيا" class="btn btn-primary" style="font-size:1.1rem;">تحدث مع مستشار</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h3>مكتب الغفران للاستشارات التعليمية</h3>
-          <p style="margin-bottom:12px;">مكتب استشارات مرخّص بالكامل في ماليزيا. نساعد الطلاب من جميع أنحاء العالم للدراسة في أفضل الجامعات الماليزية.</p>
-          <p>📍 كوالالمبور، ماليزيا</p>
-          <p>📞 <a href="tel:+601116817043">+60 11-1681 7043</a></p>
-          <p>✉️ info@al-ghufran.com</p>
-        </div>
-        <div>
-          <h3>روابط سريعة</h3>
-          <a href="#universities">الجامعات</a>
-          <a href="#majors">التخصصات</a>
-          <a href="#institutes">معاهد اللغة</a>
-          <a href="#testimonials">آراء الطلاب</a>
-          <a href="#faq">الأسئلة الشائعة</a>
-        </div>
-        <div>
-          <h3>تواصل معنا</h3>
-          <a href="https://wa.me/601116817043">💬 واتساب</a>
-          <a href="https://www.instagram.com/alghufran_consultancy">📸 Instagram</a>
-          <a href="https://www.tiktok.com/@alghufran_0">🎵 TikTok</a>
-        </div>
-      </div>
-      <div class="footer-bottom">مكتب الغفران للاستشارات التعليمية. جميع الحقوق محفوظة © 2024</div>
-    </div>
-  </footer>
-
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/601116817043?text=مرحباً، أريد استشارة مجانية" class="whatsapp-float" title="تواصل عبر واتساب">💬</a>
-
-  <!-- External Widget -->
-  <script src="https://buildmyagent.io/widget/68bcfd0bb54762572567387b/widget-professional.js?widgetId=68bcfd0bb54762572567387b"></script>
-
-  <script>
-    function toggleLang() {
-      const btn = document.querySelector('.lang-switch');
-      if (btn.textContent === 'English') {
-        btn.textContent = 'عربي';
-        document.documentElement.lang = 'en';
-        document.documentElement.dir = 'ltr';
-      } else {
-        btn.textContent = 'English';
-        document.documentElement.lang = 'ar';
-        document.documentElement.dir = 'rtl';
+    <!-- Structured data: local business / educational organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "@id": "https://al-ghufran.com/#organization",
+        "name": "Al-Ghufran Educational Consultancy",
+        "alternateName": "مكتب الغفران للاستشارات التعليمية",
+        "url": "https://al-ghufran.com/",
+        "logo": "https://al-ghufran.com/image/1.png",
+        "image": "https://al-ghufran.com/image/home%20bg.jpg",
+        "description": "Educational consultancy in Malaysia, official partner agent of 17+ Malaysian universities. University admission, student visa processing, accommodation, and airport pickup — free of charge for students. Serving students from the Middle East and Africa since 2017.",
+        "foundingDate": "2017",
+        "email": "info@al-ghufran.com",
+        "telephone": "+60199563789",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "203-01, Block L53 Arked Cengal, Universiti Teknologi Malaysia",
+          "addressLocality": "Johor Bahru",
+          "addressRegion": "Johor",
+          "postalCode": "81310",
+          "addressCountry": "MY"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 1.5587,
+          "longitude": 103.6379
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "14:00",
+            "closes": "18:00"
+          }
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "telephone": "+60199563789",
+            "email": "info@al-ghufran.com",
+            "availableLanguage": ["Arabic", "English"]
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "contact@al-ghufran.com",
+            "availableLanguage": ["Arabic", "English"]
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/alghufran_consultancy",
+          "https://www.tiktok.com/@alghufran_0"
+        ],
+        "areaServed": ["Middle East", "Africa", "Malaysia"],
+        "knowsLanguage": ["ar", "en"]
       }
-    }
-  </script>
-</body>
+    </script>
+
+    <!-- Structured data: FAQ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What are the best universities in Malaysia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Malaysia has many excellent universities including Universiti Malaya (UM), Universiti Teknologi Malaysia (UTM), and Taylor's University. We provide free consultation to help you choose the right university for you."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the admission requirements for Malaysian universities?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Requirements vary by university and program, but typically include high school certificate, English language certificate (IELTS or TOEFL), and motivation letter. We help you prepare all required documents."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does it cost to study in Malaysia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Costs range from RM 15,000-55,000 annually depending on university and program. This includes tuition fees only."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need a visa to study in Malaysia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, you need a student visa. We help you with the visa application process from start to finish, including document preparation and application submission."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I work while studying in Malaysia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, international students can work part-time (20 hours per week) while studying."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to get admission to a Malaysian university?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Getting admission usually takes 2-8 weeks depending on the university. We ensure your application is submitted on time to guarantee admission."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

@@ -1,59 +1,40 @@
-# Al-Ghufran Educational Consultancy Website
+# Al-Ghufran Educational Consultancy — Website
 
-Full static clone of [al-ghufran.com](https://al-ghufran.com) — a bilingual (Arabic/English) educational consultancy website helping students study at Malaysian universities.
+Source code for [al-ghufran.com](https://al-ghufran.com) — a bilingual (Arabic/English) educational consultancy website helping students study at Malaysian universities.
 
-## Site Structure
+Built with **React + Vite + Tailwind CSS v4**.
 
-Single-page site with these sections:
-- **Hero** — Main value proposition + WhatsApp CTA
-- **Why Us** — 5 key service promises
-- **Partner Universities** — 14+ universities with logos
-- **Academic Majors** — 36+ majors across engineering, medicine, business, law
-- **English Institutes** — 14 accredited language centers
-- **Student Testimonials** — Real student stories
-- **FAQ** — 10 most common questions
-- **Contact** — WhatsApp, Instagram, TikTok, phone, email
+## Features
 
-## Key Stats
+- Bilingual Arabic (RTL) / English (LTR) with live language toggle
+- Home, About, Majors (34 programs), Universities (34 partners), Language Institutes, and Contact pages
+- Hash-based routing with per-page titles
+- WhatsApp integration for student inquiries; email form for B2B/partner contact
+- Full SEO: Open Graph, Twitter cards, geo/local-SEO meta, `EducationalOrganization` + `FAQPage` structured data, sitemap, robots.txt
 
-- 🇲🇾 17+ partner universities
-- 👨‍🎓 100+ students placed
-- 📅 Operating since 2017
-- 💰 Zero fees charged to students (commission from universities)
-
-## Tech Stack
-
-- Originally built as a React/Vite SPA
-- Cloned as a fully rendered static HTML site
-- Original compiled assets preserved in `assets/`
-- WhatsApp widget integration
-
-## How to Run
+## Development
 
 ```bash
-# Serve locally
-python3 -m http.server 8080
-
-# Or deploy to any static host (Netlify, Vercel, GitHub Pages, Coolify)
+npm install
+npm run dev        # local dev server at http://localhost:5173
+npm run build      # production build into dist/
+npm run preview    # preview the production build
 ```
 
-## Files
+## Deployment
+
+Upload the contents of `dist/` to the web hosting for al-ghufran.com.
+
+## Project Structure
 
 ```
-├── index.html          # Full rendered static page
-├── assets/
-│   ├── index-CLvqcw1Q.js   # Original React bundle
-│   └── index-DQBf8TKB.css  # Original CSS
-└── image/              # 20 university logos + backgrounds
+src/
+  components/   # page sections and pages (Hero, About, Services, Majors, ...)
+  data/         # majors, universities, institutes datasets (AR/EN)
+  i18n/         # translations dictionary + language context
+  index.css     # design tokens + Tailwind
+public/
+  image/        # logos and photos
+  robots.txt
+  sitemap.xml
 ```
-
-## Contact
-
-- **Website:** https://al-ghufran.com
-- **WhatsApp:** +60 11-1681 7043
-- **Instagram:** @alghufran_consultancy
-- **TikTok:** @alghufran_0
-
----
-
-*This is a static clone for archival/demo purposes. All rights belong to Al-Ghufran Educational Consultancy.*
